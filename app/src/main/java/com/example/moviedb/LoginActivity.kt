@@ -43,13 +43,13 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        fun login(view: View){
+    }
 
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
+    fun login(view: View){
 
-        }
+        val intent = Intent(applicationContext, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
 
     }
 }
