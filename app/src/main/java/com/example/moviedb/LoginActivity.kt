@@ -5,12 +5,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
+    private val email ="b"
+    private val pw ="1"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -47,9 +50,18 @@ class LoginActivity : AppCompatActivity() {
 
     fun login(view: View){
 
-        val intent = Intent(applicationContext, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
+        if(editText?.text!!.equals(email) && editText1.text.equals(pw)){
+
+            val intent = Intent(applicationContext, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }else{
+            Toast.makeText(this,"Wrong E-mail or Password!!", Toast.LENGTH_SHORT).show()
+
+        }
+
+
 
     }
 }

@@ -36,10 +36,11 @@
             android:backgroundTint="@android:color/darker_gray"
             android:ems="10"
             android:hint="@string/e_mail"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
+            android:inputType="text"
+            android:paddingStart="10dp"
             android:textColor="@android:color/white"
-            android:textColorHint="#BCBCBC" />
+            android:textColorHint="#BCBCBC"
+            tools:ignore="RtlSymmetry" />
 
         <EditText
             android:id="@+id/editText1"
@@ -48,12 +49,13 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:backgroundTint="@android:color/darker_gray"
-            android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:textColor="@android:color/white"
-            android:textColorHint="#BCBCBC" />
+            android:textColorHint="#BCBCBC"
+            android:ems="10"
+            android:inputType="numberPassword"
+            tools:ignore="RtlSymmetry" />
 
         <CheckBox
             android:id="@+id/checkBox"

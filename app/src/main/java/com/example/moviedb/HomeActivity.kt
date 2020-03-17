@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : AppCompatActivity() {
 
     private val mOnnavigationItemSelectedListener =
+
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
@@ -31,8 +32,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_home)
         bottomNavi.setOnNavigationItemSelectedListener(mOnnavigationItemSelectedListener)
+
         replaceFragment(HomeFragment())
     }
     private fun replaceFragment(fragment: Fragment){
