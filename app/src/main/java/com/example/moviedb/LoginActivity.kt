@@ -47,9 +47,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
     fun login(view: View){
-
         val currentMail = editText?.text.toString()
         val currentPw = editText1.text.toString().toIntOrNull()
 

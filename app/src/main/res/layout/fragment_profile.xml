@@ -3,12 +3,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProfileFragment"
+    app:layout_constraintBottom_toTopOf="@+id/bottomNavi">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#3F3931">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavi">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Profile and Settings"
+                android:textColor="#DDDBDB"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#DDDBDB"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textColorHint="#B3A9A9" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#DDDBDB"
+                android:ems="10"
+                android:hint="Surname"
+                android:inputType="textPersonName"
+                android:textColorHint="#B3A9A9" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#DDDBDB"
+                android:ems="10"
+                android:hint="E-Mail"
+                android:inputType="textPersonName"
+                android:textColorHint="#B3A9A9" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#DDDBDB"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPersonName"
+                android:textColorHint="#B3A9A9" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Bildirim ayarları"
+                android:textColor="#DDDBDB" />
+
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Kullanıcı bilgi ayarları"
+                android:textColor="#DDDBDB" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Şirketimiz kişisel verilerinizi, Kullanıcılar tarafından İnternet Sitesi ve Mobil Uygulama’ya geçmişte yapılan ziyaretleri temel alarak reklamlarla ilgili bilgi toplanması, reklamların optimize edilmesi ve yayınlanması, İnternet Sitesi ve Mobil Uygulama’da kullanıcı dostu bir deneyim sunulması, Web Sitesi’nin geliştirilmesinin ve düzgün bir şekilde çalışmasının sağlanması, Şirket’in hizmetlerinin ve ürünlerinin iyileştirmesinin sağlanması, Web Sitesi’nin kullanımının kolaylaştırılmasının ve Şirket’in hizmetlerini ve Web Sitesi’nin kullanımının Kullanıcıların ilgi alanlarına ve tercihlerine yönelik olarak değiştirilmesinin sağlanması, Kullanıcı’lara daha iyi hizmet sunulması, daha iyi bir alışveriş deneyimi sağlanması, istatistiki bilgi elde edilmesinin ve bu bilgilerin derlenmesinin sağlanması, Şirket’in ticari faaliyetlerinin geliştirilmesi, kampanya ve pazarlama çalışmaları gerçekleştirilmesi, özel promosyon faaliyetlerinde bulunulması, İnternet Sitesi’ni ve varsa İnternet Sitesi üzerinden verilen reklamların, Kullanıcılar’ın ilgi alanlarına göre özelleştirilmesi, hedef kitle çalışmaları yapılması, talep eden Kullanıcı’ların üyelik işlemlerinin tamamlanması, müşterileri daha iyi tanıyarak müşterilere en uygun hizmetin verilmesini sağlamak için çalışmalarda bulunulması, satış ve pazarlama faaliyetlerinin yürütülebilmesi, her türlü iletişim aracına uygun bildirimin sağlanabilmesi, Şirket tarafından sunulan ürün ve hizmetlerden kullanıcıların faydalanabilmesi için gerekli çalışmaların yapılması, sunulan ürün ve hizmetlerin müşterilerin beğeni, kullanım alışkanlıkları ve ihtiyaçlarına göre özelleştirilerek müşterilere önerilmesi için gerekli çalışmaların yapılması, birebir ve/veya entegre pazarlama faaliyetlerinin yürütülmesi, satış ve satış sonrası operasyonların gerçekleştirilmesi, İnternet Sitesi ve/veya Mobil Uygulama üzerinden alışveriş yapanların kimlik bilgilerinin teyit edilmesi, İnternet Sitesi ve/veya Mobil Uygulama’da yer alan iletişim formunu doldurarak tarafımıza ileten Kullanıcılar ile iletişime geçilmesi, Kullanıcılar’ın söz konusu iletişim formunda herhangi bir talepte bulunmaları halinde taleplerinin yerine getirilmesi için gerekli aksiyonların alınması, alışveriş yapan müşterilerin siparişlerinin yerine getirilmesi ve söz konusu kişiler ile siparişleri kapsamında iletişime geçilmesi amaçları ile sınırlı olarak işleyebilecektir."
+                android:textColor="#DDDBDB" />
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
