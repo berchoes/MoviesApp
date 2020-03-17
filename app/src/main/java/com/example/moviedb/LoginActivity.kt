@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
-    private val email ="b"
-    private val pw ="1"
+    private val email = "b"
+    private val pw = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -50,14 +50,20 @@ class LoginActivity : AppCompatActivity() {
 
     fun login(view: View){
 
-        if(editText?.text!!.equals(email) && editText1.text.equals(pw)){
+        val currentMail = editText?.text.toString()
+        val currentPw = editText1.text.toString().toIntOrNull()
+
+        if(currentMail == email && currentPw == pw){
 
             val intent = Intent(applicationContext, HomeActivity::class.java)
             startActivity(intent)
             finish()
-
-        }else{
-            Toast.makeText(this,"Wrong E-mail or Password!!", Toast.LENGTH_SHORT).show()
+        }
+        else if( currentMail.isEmpty() || currentPw == null  ){
+            Toast.makeText(this,"Fields cannot be Empty.", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this,"Wrong E-mail or Password :(", Toast.LENGTH_SHORT).show()
 
         }
 
