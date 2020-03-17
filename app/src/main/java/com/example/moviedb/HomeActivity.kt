@@ -33,6 +33,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         bottomNavi.setOnNavigationItemSelectedListener(mOnnavigationItemSelectedListener)
+        replaceFragment(HomeFragment())
     }
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
