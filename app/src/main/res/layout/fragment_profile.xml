@@ -5,14 +5,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileFragment"
-    app:layout_constraintBottom_toTopOf="@+id/bottomNavi">
+    app:layout_constraintBottom_toTopOf="@+id/bottomNavi"
+    android:paddingBottom="50dp">
 
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3F3931">
+        android:background="#3F3931"
+        >
 
 
         <LinearLayout
