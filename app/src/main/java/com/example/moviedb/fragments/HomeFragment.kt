@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moviedb.services.MovieModel
 
 import com.example.moviedb.R
+import com.example.moviedb.adapters.RecyclerAdapter
 import com.example.moviedb.services.MoviesApi
+import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +33,8 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
 
     private val BASE_URL = "http://omdbapi.com/"
-    lateinit var  movieModels: ArrayList<MovieModel>
+    private lateinit var  movieModels: ArrayList<MovieModel>
+    private lateinit var recyclerViewAdapter : RecyclerAdapter
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -40,6 +46,9 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
 
+
+            val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
+            recyclerView.layoutManager = layoutManager
             loadData()
 
         }
@@ -54,7 +63,7 @@ class HomeFragment : Fragment() {
 
         call.enqueue(object: Callback<List<MovieModel>> {
             override fun onFailure(call: Call<List<MovieModel>>, t: Throwable) {
-                println("olmadı kanka")
+                println("Bu hiç iyi olmadı.")
                 t.printStackTrace()
             }
 
@@ -66,13 +75,13 @@ class HomeFragment : Fragment() {
                     response.body()?.let{
 
                         movieModels = ArrayList(it)
-                        for(movieModel : MovieModel in movieModels!!){
-                            println(movieModel.title)
-                            println(movieModel.poster)
+                        movieModels?.let {
+                            recyclerViewAdapter = RecyclerAdapter(movieModels)
+                        }
+
                         }
                     }
                 }
-            }
 
         })
     }

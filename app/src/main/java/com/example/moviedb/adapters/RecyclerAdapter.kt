@@ -11,9 +11,10 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.grid_layout.view.*
 
 
-class RecyclerAdapter(var context: Context, var movieList : ArrayList<MovieModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerAdapter(var movieList : ArrayList<MovieModel>) : RecyclerView.Adapter<RecyclerAdapter.ItemHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.grid_layout, parent,false)
     return ItemHolder(view)
     }
@@ -22,13 +23,15 @@ class RecyclerAdapter(var context: Context, var movieList : ArrayList<MovieModel
         return movieList.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        holder.bind(movieList[position])
     }
 
-    class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ItemHolder(view: View) : RecyclerView.ViewHolder(view){
+
         fun bind(movieModel: MovieModel){
-           // itemView.posterImage.setImageDrawable(Picasso.get().load)
+            itemView.movieTitle.text = movieModel.title
+            Picasso.get().load(movieModel.poster).into(itemView.posterImage)
         }
     }
 }

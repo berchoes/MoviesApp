@@ -1,11 +1,11 @@
-package com.example.moviedb
+package com.example.moviedb.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.moviedb.R
 import com.example.moviedb.fragments.HomeFragment
 import com.example.moviedb.fragments.ProfileFragment
-import com.example.moviedb.services.MovieModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -38,7 +38,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         bottomNavi.setOnNavigationItemSelectedListener(mOnnavigationItemSelectedListener)
-
         replaceFragment(HomeFragment())
 
 
