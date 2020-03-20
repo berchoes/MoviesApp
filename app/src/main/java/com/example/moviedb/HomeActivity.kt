@@ -1,13 +1,17 @@
 package com.example.moviedb
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.moviedb.fragments.HomeFragment
 import com.example.moviedb.fragments.ProfileFragment
+import com.example.moviedb.services.MovieModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
+
+
+//http://www.omdbapi.com/?i=tt3896198&apikey=39a81601
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -36,7 +40,13 @@ class HomeActivity : AppCompatActivity() {
         bottomNavi.setOnNavigationItemSelectedListener(mOnnavigationItemSelectedListener)
 
         replaceFragment(HomeFragment())
+
+
+
+
     }
+
+
     private fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
