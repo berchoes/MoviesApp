@@ -17,8 +17,7 @@ class SplashActivity: AppCompatActivity() {
        object : CountDownTimer(2000,1000){
 
            override fun onFinish() {
-               val intent = Intent(applicationContext,
-                   LoginActivity::class.java)
+               val intent = Intent(applicationContext,LoginActivity::class.java)
                startActivity(intent)
                finish()
            }

@@ -29,6 +29,7 @@ class RecyclerAdapter(var movieList : ArrayList<MovieModel>) : RecyclerView.Adap
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view){
 
         fun bind(movieModel: MovieModel){
+
             itemView.movieTitle.text = movieModel.title
             Picasso.get().load(movieModel.poster).into(itemView.posterImage)
         }

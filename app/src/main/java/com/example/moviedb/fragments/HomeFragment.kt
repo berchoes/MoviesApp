@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviedb.services.MovieModel
@@ -46,14 +47,15 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
 
-
-            val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
+            val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(activity,3,LinearLayoutManager.VERTICAL,false)
             recyclerView.layoutManager = layoutManager
             loadData()
 
         }
     }
-    fun loadData(){
+
+
+     private fun loadData(){
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
