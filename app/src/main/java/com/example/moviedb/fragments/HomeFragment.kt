@@ -54,10 +54,12 @@ class HomeFragment : Fragment() {
         }
     }
     fun loadData(){
+
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
         val service = retrofit.create(MoviesApi::class.java)
         val call = service.getData()
 

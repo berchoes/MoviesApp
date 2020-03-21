@@ -40,9 +40,6 @@ class HomeActivity : AppCompatActivity() {
         bottomNavi.setOnNavigationItemSelectedListener(mOnnavigationItemSelectedListener)
         replaceFragment(HomeFragment())
 
-
-
-
     }
 
 
