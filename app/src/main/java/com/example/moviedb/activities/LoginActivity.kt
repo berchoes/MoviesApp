@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         val isButtonChecked : Boolean = sharedPreferences.getBoolean("checkbox", false)
         editText?.setText(emailPref)
         editText1?.setText(pwPref)
-        checkBox.setChecked(isButtonChecked)
+        checkBox.isChecked = isButtonChecked
 
 
         checkBox.setOnCheckedChangeListener { buttonView, _ ->
@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = editText1.text.toString()
                 sharedPreferences.edit().putString("email",email).apply()
                 sharedPreferences.edit().putString("password",password).apply()
-                sharedPreferences.edit().putBoolean("checkbox", checkBox.isChecked()).apply()
+                sharedPreferences.edit().putBoolean("checkbox", checkBox.isChecked).apply()
 
 
             }else if(!buttonView.isChecked){
