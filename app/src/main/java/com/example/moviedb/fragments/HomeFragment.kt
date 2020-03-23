@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,8 +36,8 @@ class HomeFragment : Fragment() {
 
 //https://api.themoviedb.org/3/movie/550?api_key=983b46f95f78ff0f9dd82a7bb2a6d321
 
-    private val apiKey = "983b46f95f78ff0f9dd82a7bb2a6d321"
-    private val baseUrl = "https://api.themoviedb.org/3/"
+    private val apiKey = "39a81601"
+    private val baseUrl = "http://www.omdbapi.com"
     private var  movieModels: ArrayList<MovieModel>? = null
     private var recyclerViewAdapter : RecyclerAdapter? = null
    // private var compositeDisposable : CompositeDisposable? = null
@@ -51,11 +52,11 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-        //compositeDisposable = CompositeDisposable()
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(activity,3,LinearLayoutManager.VERTICAL,false)
         recyclerView?.layoutManager = layoutManager
         loadData()
+        //compositeDisposable = CompositeDisposable()
+
     }
 
     private fun loadData(){
@@ -73,7 +74,7 @@ class HomeFragment : Fragment() {
 
 
         val service = retrofit.create(MoviesApi::class.java)
-        val call = service.getData(apiKey)
+        val call = service.getData(apiKey,"Doctor Who")
 
         call.enqueue(object: Callback<List<MovieModel>> {
             override fun onFailure(call: Call<List<MovieModel>>, t: Throwable) {

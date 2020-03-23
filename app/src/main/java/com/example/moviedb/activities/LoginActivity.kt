@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
     fun login(view: View){
+
         val currentMail = editText?.text.toString()
         val currentPw = editText1.text.toString().toIntOrNull()
 
@@ -58,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        else if( currentMail.isEmpty() || currentPw == null  ){
+        else if(currentMail.isEmpty() || currentPw == null){
             Toast.makeText(this,"Fields cannot be Empty.", Toast.LENGTH_SHORT).show()
         }
         else{
