@@ -8,8 +8,6 @@ import retrofit2.http.Query
 
 interface MoviesApi {
 
-    val apiKey: String
-
     //?apikey=39a81601&s=Doctor%20Who
     //movie/550?api_key=983b46f95f78ff0f9dd82a7bb2a6d321
 
