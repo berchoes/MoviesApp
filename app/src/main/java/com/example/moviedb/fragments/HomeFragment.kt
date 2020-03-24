@@ -28,20 +28,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
+/**b
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class HomeFragment : Fragment() {
 
-//https://api.themoviedb.org/3/movie/550?api_key=983b46f95f78ff0f9dd82a7bb2a6d321
 
     private val apiKey = "39a81601"
     private val baseUrl = "https://www.omdbapi.com"
     private var  movieModels: ArrayList<MovieModel>? = null
     private var recyclerViewAdapter : RecyclerAdapter? = null
-   // private var compositeDisposable : CompositeDisposable? = null
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -56,10 +54,7 @@ class HomeFragment : Fragment() {
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(activity,3,LinearLayoutManager.VERTICAL,false)
         recyclerView?.layoutManager = layoutManager
         loadData()
-        //compositeDisposable = CompositeDisposable()
-
     }
-
     private fun loadData(){
 
         val retrofit = Retrofit.Builder()
@@ -67,12 +62,6 @@ class HomeFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-
-        /*compositeDisposable?.add(retrofit.getData()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(this::handleResponse))*/
-
 
         val service = retrofit.create(MoviesApi::class.java)
         val call = service.getData(apiKey,"Doctor Who")
@@ -89,11 +78,11 @@ class HomeFragment : Fragment() {
                 response: Response<ResponseModel>
             ) {
                 if(response.isSuccessful){
-                response.body()?.let {
+                response.body()?.let { it ->
 
                     movieModels = ArrayList(it.Search)
                     movieModels?.let {
-                        recyclerViewAdapter = RecyclerAdapter(movieModels!!)
+                        recyclerViewAdapter = RecyclerAdapter(movieList = it)
                         recyclerView.adapter = recyclerViewAdapter
                     }
                 }
@@ -103,22 +92,6 @@ class HomeFragment : Fragment() {
         }
 
         })
-    }
-    /*private fun handleResponse(movieList : List<MovieModel>) {
-
-        movieModels = ArrayList(movieList)
-
-        movieModels?.let {
-            this.recyclerViewAdapter = RecyclerAdapter(it)
-            recyclerView.adapter = this.recyclerViewAdapter
-
-        }
-    }*/
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //compositeDisposable?.clear()
-
     }
 
     override fun onCreateView(
