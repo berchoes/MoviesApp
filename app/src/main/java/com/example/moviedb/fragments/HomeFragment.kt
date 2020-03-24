@@ -14,6 +14,7 @@ import com.example.moviedb.services.MovieModel
 import com.example.moviedb.R
 import com.example.moviedb.adapters.RecyclerAdapter
 import com.example.moviedb.services.MoviesApi
+import com.example.moviedb.services.ResponseModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
 //https://api.themoviedb.org/3/movie/550?api_key=983b46f95f78ff0f9dd82a7bb2a6d321
 
     private val apiKey = "39a81601"
-    private val baseUrl = "http://www.omdbapi.com"
+    private val baseUrl = "https://www.omdbapi.com"
     private var  movieModels: ArrayList<MovieModel>? = null
     private var recyclerViewAdapter : RecyclerAdapter? = null
    // private var compositeDisposable : CompositeDisposable? = null
@@ -76,27 +77,28 @@ class HomeFragment : Fragment() {
         val service = retrofit.create(MoviesApi::class.java)
         val call = service.getData(apiKey,"Doctor Who")
 
-        call.enqueue(object: Callback<List<MovieModel>> {
-            override fun onFailure(call: Call<List<MovieModel>>, t: Throwable) {
+        call.enqueue(object: Callback<ResponseModel> {
+
+            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                 println("Bu hiç iyi olmadı.")
                 t.printStackTrace()
             }
 
             override fun onResponse(
-                call: Call<List<MovieModel>>,
-                response: Response<List<MovieModel>>
+                call: Call<ResponseModel>,
+                response: Response<ResponseModel>
             ) {
                 if(response.isSuccessful){
                 response.body()?.let {
 
-                    movieModels = ArrayList(it)
+                    movieModels = ArrayList(it.Search)
                     movieModels?.let {
-                        recyclerViewAdapter = RecyclerAdapter(it)
+                        recyclerViewAdapter = RecyclerAdapter(movieModels!!)
                         recyclerView.adapter = recyclerViewAdapter
                     }
                 }
                 }else{
-                    println("olmadı")
+                    println("Olmadı")
             }
         }
 
