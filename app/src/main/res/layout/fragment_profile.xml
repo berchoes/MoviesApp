@@ -64,6 +64,7 @@
                 android:ems="10"
                 android:hint="E-Mail"
                 android:inputType="textPersonName"
+                android:textColor="#DDDBDB"
                 android:textColorHint="#B3A9A9" />
 
             <EditText
@@ -75,6 +76,7 @@
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPersonName"
+                android:textColor="#DDDBDB"
                 android:textColorHint="#B3A9A9" />
 
             <Switch

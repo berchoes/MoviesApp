@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="125dp"
+    android:layout_height="190dp"
     android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:background="#3F3931"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
     app:cardPreventCornerOverlap="true"
@@ -15,24 +16,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#3F3931"
+          android:layout_gravity="center"
         android:padding="10dp">
 
         <ImageView
             android:id="@+id/posterImage"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp" />
 
         <TextView
             android:id="@+id/movieTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/posterImage"
-            android:layout_marginLeft="33dp"
-            android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="title"
-            android:textStyle="bold" />
+            android:text="@string/title"
+            android:textColor="#CFC3C3"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            tools:ignore="SmallSp" />
+
     </LinearLayout>
 
 

@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 
 import com.example.moviedb.R
+import com.example.moviedb.activities.LoginActivity
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +39,14 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val v  = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        val emailText = v.findViewById<EditText>(R.id.editText4)
+        emailText.setText("b")
+        val pwText = v.findViewById<EditText>(R.id.editText5)
+        pwText.setText("1")
+
+        return v
     }
 
     companion object {

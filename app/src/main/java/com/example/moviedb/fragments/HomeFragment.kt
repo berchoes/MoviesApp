@@ -1,21 +1,20 @@
 package com.example.moviedb.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviedb.services.MovieModel
-
 import com.example.moviedb.R
 import com.example.moviedb.adapters.RecyclerAdapter
 import com.example.moviedb.services.MoviesApi
 import com.example.moviedb.services.ResponseModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +39,7 @@ class HomeFragment : Fragment() {
     private lateinit var  movieModels: ArrayList<MovieModel>
     private lateinit var recyclerViewAdapter : RecyclerAdapter
 
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -50,13 +50,32 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-        recyclerView.layoutManager = GridLayoutManager(this.context,3,LinearLayoutManager.VERTICAL,false)
-        loadData()
     }
 
+    private fun search(view: SearchView){
+        view.setQuery("Doctor Who", false)
 
-    private fun loadData(){
+        view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                if(query == null){
+                    Toast.makeText(activity,"Search cannot be Empty",Toast.LENGTH_SHORT).show()
+                }else{
+                    loadData(query)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+
+    }
+
+    private fun loadData(searchQuery: String){
 
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -65,7 +84,7 @@ class HomeFragment : Fragment() {
             .build()
 
         val service = retrofit.create(MoviesApi::class.java)
-        val call = service.getData(apiKey,"Doctor Who")
+        val call = service.getData(apiKey,searchQuery)
 
         call.enqueue(object: Callback<ResponseModel> {
 
@@ -82,7 +101,7 @@ class HomeFragment : Fragment() {
                 response.body()?.let { it ->
 
                     movieModels = ArrayList(it.Search)
-                    movieModels?.let {
+                    movieModels.let {
                         recyclerViewAdapter = RecyclerAdapter(movieList = it)
                         recyclerView.adapter = recyclerViewAdapter
                     }
@@ -93,13 +112,24 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val v  = inflater.inflate(R.layout.fragment_home, container, false)
+        val searchView= v.findViewById<SearchView>(R.id.searchView)
+        val recyclerView= v.findViewById<RecyclerView>(R.id.recyclerView)
+        searchView.setQuery("Doctor Who", false)
+        searchView.clearFocus()
+
+        recyclerView.layoutManager = GridLayoutManager(activity,3,LinearLayoutManager.VERTICAL,false)
+        loadData(searchView.query.toString())
+        search(v.searchView)
+        return v
+
     }
 
     companion object {
