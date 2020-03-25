@@ -10,6 +10,6 @@ interface MoviesApi {
     //?apikey=39a81601&s=Doctor%20Who
 
     @GET("/")
-        fun getData(@Query("apikey") apiKey: String, @Query("s") search : String): Call<ResponseModel>
+        fun getData(@Query("apikey") apiKey: String, @Query("s") search: String): Call<ResponseModel>
 
 }

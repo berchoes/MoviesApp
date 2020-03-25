@@ -35,11 +35,10 @@ private const val ARG_PARAM2 = "param2"
  */
 class HomeFragment : Fragment() {
 
-
     private val apiKey = "39a81601"
     private val baseUrl = "https://www.omdbapi.com"
-    private var  movieModels: ArrayList<MovieModel>? = null
-    private var recyclerViewAdapter : RecyclerAdapter? = null
+    private lateinit var  movieModels: ArrayList<MovieModel>
+    private lateinit var recyclerViewAdapter : RecyclerAdapter
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -51,10 +50,12 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(activity,3,LinearLayoutManager.VERTICAL,false)
-        recyclerView?.layoutManager = layoutManager
+
+        recyclerView.layoutManager = GridLayoutManager(this.context,3,LinearLayoutManager.VERTICAL,false)
         loadData()
     }
+
+
     private fun loadData(){
 
         val retrofit = Retrofit.Builder()
@@ -88,12 +89,10 @@ class HomeFragment : Fragment() {
                 }
                 }else{
                     println("Olmadı")
+                }
             }
-        }
-
         })
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
